@@ -1,5 +1,5 @@
 {
-    "name": "joshdifabio/composed",
+    "name": "snowio/composed",
     "description": "Easily parse your project's Composer configuration, and those of its dependencies, at runtime.",
     "keywords": [ "composer", "dependency", "package" ],
     "license": "MIT",
@@ -8,6 +8,10 @@
             "name": "Josh Di Fabio",
             "email": "joshdifabio@gmail.com"
         }
+    ],
+    "repositories": [
+        {"type": "composer", "url": "https://repo.packagist.com/snowio/"},
+        {"packagist.org": false}
     ],
     "require": {
         "php": ">=7"
