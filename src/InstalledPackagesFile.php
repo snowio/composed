@@ -26,6 +26,11 @@ class InstalledPackagesFile
         if (null === $this->packages) {
             $packages = [];
             $packagesData = $this->json->get();
+            // Composer 2 wraps the package list as {"packages": [...], "dev": ..., ...}
+            // instead of Composer 1's bare array [{...}, {...}, ...]. Support both.
+            if (is_array($packagesData) && array_key_exists('packages', $packagesData)) {
+                $packagesData = $packagesData['packages'];
+            }
             foreach ($packagesData as $packageData) {
                 $package = Package::fromArray($this->root, $packageData);
                 $packages[$package->getName()] = $package;
